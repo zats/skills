@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex App Modifier"
+  short_description: "Create locally modified Codex app bundles."
+  default_prompt: "Modify the Codex desktop app according to my request, package it as a separate app bundle, replace the icon, sign it, and verify launch."
