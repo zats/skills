@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revise Instructions"
+  short_description: "Edit prompts and skills by replacing conflicting guidance."
+  default_prompt: "Revise an existing system prompt, instruction file, or skill by removing contradictions first, editing existing text in place, and adding new text only if needed."
