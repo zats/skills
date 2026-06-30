@@ -16,7 +16,7 @@ description: Create a locally modified copy of the Codex macOS desktop app. Use 
 - After finalizing, verify the packed app bundle contains the intended edits by extracting or grepping `/Applications/Codex-<Name>.app/Contents/Resources/app.asar`, not only the temp edit directory.
 - On the first use in a session, run preflight before doing anything else.
 - For UI changes, support both light and dark mode by matching the app's existing theme variables/selectors.
-- For added UI, match the closest existing in-app precedent so fonts, sizes, spacing, colors, states, and density feel native to Codex.
+- For UI and behavior changes, first find existing Codex functionality, components, selectors, hooks, and patterns that can be reused. If direct reuse is not possible, copy and adapt the closest existing implementation. Build from scratch only after those options are exhausted.
 
 ## Workflow
 
@@ -39,7 +39,7 @@ If the destination exists, ask before replacing it, then rerun with `--replace`.
 
 4. Edit only the printed `edit_dir` (`<workdir>/app`). Search with `rg`; patch extracted files with `apply_patch` or narrow mechanical commands. For renderer CSS/JS, expect Vite assets under `webview/assets`. For Electron bootstrap, expect `.vite/build/bootstrap.js`.
 
-For UI-related requests, first find the most similar existing UI in the extracted bundle and mirror its implementation style. Reuse its typography scale, padding, gaps, color tokens, borders, hover/focus states, disabled states, and dark-mode selectors. Prefer existing app tokens and classes over new raw values. Do not add UI that visually feels separate from Codex. Verify the final behavior in both appearances when possible.
+For UI-related requests, assume Codex likely already has a similar surface because the app is rich. Search the extracted bundle for the closest existing behavior and component before editing. Reuse that implementation when possible. If it cannot be reused directly, copy and adapt the closest implementation. Build a new solution only as the fallback. Reuse typography, padding, gaps, color tokens, borders, hover/focus states, disabled states, and dark-mode selectors from the precedent. Prefer existing app tokens and classes over new raw values. Do not add UI that visually feels separate from Codex. Verify the final behavior in both appearances when possible.
 
 5. Finalize:
 
